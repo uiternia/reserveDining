@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('side_dish'); 
             $table->string('soup');
             $table->string('fruit');
-            $table->datetime('day_date');
+            $table->date('day_date');
             $table->integer('max_people');
             $table->timestamps();
         });

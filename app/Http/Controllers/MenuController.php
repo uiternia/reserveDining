@@ -17,7 +17,7 @@ class MenuController extends Controller
     public function index()
     {
         $menus = DB::table('menus')
-        ->orderBy('day_date','desc')
+        ->orderBy('day_date','asc')
         ->paginate(30);
         return view('owner.menus.index',
         compact('menus'));

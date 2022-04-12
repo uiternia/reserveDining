@@ -21,11 +21,13 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($menus as $menu)
                       <tr>
-                        <td class="px-4 py-3">Start</td>
-                        <td class="px-4 py-3">5 Mb/s</td>
-                        <td class="px-4 py-3">15 GB</td>
+                        <td class="px-4 py-3">{{$menu->day_date}}</td>
+                        <td class="px-4 py-3">{{$menu->main_dish}}</td>
+                        <td class="px-4 py-3">これから</td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
