@@ -15,6 +15,11 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    @can('owner-higher')
+                    <x-jet-nav-link href="{{ route('menus.index') }}" :active="request()->routeIs('menus.index')">
+                        献立追加
+                    </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -140,6 +145,11 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            @can('owner-higher')
+            <x-jet-responsive-nav-link href="{{ route('menus.index') }}" :active="request()->routeIs('menus.index')">
+                献立追加
+            </x-jet-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->
