@@ -59,4 +59,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function menus()
+    {
+        return $this->belongsToMany(Event::class,'reservations')
+        ->withPivot('id','number_of_people');
+    }
 }

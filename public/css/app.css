@@ -1006,6 +1006,22 @@ select {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -1089,6 +1105,9 @@ select {
 }
 .mr-8 {
   margin-right: 2rem;
+}
+.mb-3 {
+  margin-bottom: 0.75rem;
 }
 .block {
   display: block;
@@ -1207,6 +1226,9 @@ select {
 .max-w-6xl {
   max-width: 72rem;
 }
+.max-w-2xl {
+  max-width: 42rem;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1275,6 +1297,9 @@ select {
 }
 .items-center {
   align-items: center;
+}
+.justify-start {
+  justify-content: flex-start;
 }
 .justify-end {
   justify-content: flex-end;
@@ -2825,6 +2850,10 @@ span.flatpickr-weekday {
     margin-left: 0px;
   }
 
+  .sm\:mr-8 {
+    margin-right: 2rem;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -2987,6 +3016,10 @@ span.flatpickr-weekday {
     margin-top: 0px;
   }
 
+  .md\:flex {
+    display: flex;
+  }
+
   .md\:grid {
     display: grid;
   }
@@ -3001,6 +3034,10 @@ span.flatpickr-weekday {
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:justify-around {
+    justify-content: space-around;
   }
 
   .md\:gap-6 {

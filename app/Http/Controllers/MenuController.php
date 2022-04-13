@@ -11,16 +11,20 @@ use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $today = Carbon::today();
 
+        $reservedPeople = DB::table('reservations')
+        ->select('menu_id',DB::raw('sum(number_of_people) as number_of_people'))
+        ->groupBy('menu_id');
+
+
         $menus = DB::table('menus')
+        ->leftJoinSub($reservedPeople,'reservedPeople',function($join){
+            $join->on('menus.id', '=' ,'reservedPeople.menu_id');
+        })
         ->whereDate('day_date','>=' , $today)
         ->orderBy('day_date','asc')
         ->paginate(30);
@@ -62,7 +66,8 @@ class MenuController extends Controller
     public function show(Menu $menu)
     {
         $menu = Menu::findOrFail($menu->id);
-        return view('owner.menus.show',compact('menu'));
+        $users = $menu->users;
+        return view('owner.menus.show',compact('menu','users'));
     }
 
     

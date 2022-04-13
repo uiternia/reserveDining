@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade'); 
             $table->foreignId('menu_id')->constrained()->onUpdate('cascade');
+            $table->integer('number_of_people');
             $table->timestamps();
         });
     }

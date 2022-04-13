@@ -29,7 +29,13 @@
                       <tr>
                         <td class="px-4 py-3"><a href="{{ route('menus.show', ['menu'=> $menu->id ])}}">{{$menu->day_date}}</a></td>
                         <td class="px-4 py-3">{{$menu->main_dish}}</td>
-                        <td class="px-4 py-3">これから</td>
+                        <td class="px-4 py-3">
+                          @if(is_null($menu->number_of_people))
+                          0
+                          @else
+                          {{$menu->number_of_people}}
+                          @endif
+                        </td>
                       </tr>
                       @endforeach
                     </tbody>

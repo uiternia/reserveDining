@@ -15,10 +15,12 @@ class ReservationSeeder extends Seeder
          [ 
             'user_id' => 1,
             'menu_id' => 1, 
+            'number_of_people' => 1,
          ],
          [
            'user_id' => 1,
            'menu_id' => 2, 
+           'number_of_people' => 1,
          ],
         ]);
     }

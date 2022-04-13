@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-            UserSeeder::class,
+            // Reservation::class,
             MenuSeeder::class,
-            Reservation::class
+            UserSeeder::class,
         ]);
     }
 }
