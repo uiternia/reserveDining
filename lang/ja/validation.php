@@ -154,14 +154,12 @@ return [
     */
 
     'attributes' => [
-        'name' => '名前',
-        'email' => 'メールアドレス',
-        'password' => 'パスワード',
-        'event_name' => 'イベント名',
-        'information' => 'イベント詳細',
-        'event_date' => 'イベントの日付',
-        'start_time' => '開催時刻',
-        'end_time' => '終了時刻',
+        'staple_food' => '主食',
+        'main_dish' => '主菜',
+        'side_dish' => '副菜',
+        'soup' => 'スープ',
+        'fruit' => '果物',
+        'day_date' => '日付',
         'max_people' => '定員上限',
     ], 
 

@@ -13,7 +13,7 @@ class UpdateMenuRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class UpdateMenuRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'staple_food' => ['required','max:50'],
+            'main_dish' => ['required','max:50'],
+            'side_dish' => ['required','max:50'],
+            'soup' => ['required','max:50'],
+            'fruit' => ['required','max:50'],
+            'day_date' => ['required'],
+            'max_people' => ['required','numeric','between:1,100'],
         ];
     }
 }

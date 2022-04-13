@@ -17,7 +17,7 @@
                     </x-jet-nav-link>
                     @can('owner-higher')
                     <x-jet-nav-link href="{{ route('menus.index') }}" :active="request()->routeIs('menus.index')">
-                        献立追加
+                        社食日程
                     </x-jet-nav-link>
                     @endcan
                 </div>
@@ -147,7 +147,7 @@
             </x-jet-responsive-nav-link>
             @can('owner-higher')
             <x-jet-responsive-nav-link href="{{ route('menus.index') }}" :active="request()->routeIs('menus.index')">
-                献立追加
+                社食日程
             </x-jet-responsive-nav-link>
             @endcan
         </div>
