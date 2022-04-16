@@ -12,14 +12,27 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    @can('admin-higher')
+                    <x-jet-nav-link href="{{ route('admin.index') }}" :active="request()->routeIs('admin.index')">
+                        職員社食情報管理
                     </x-jet-nav-link>
+                    @endcan
+                    @cannot('owner-higher')
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        社員食予約
+                    </x-jet-nav-link>
+                    @endcan
                     @can('owner-higher')
                     <x-jet-nav-link href="{{ route('menus.index') }}" :active="request()->routeIs('menus.index')">
                         社食日程
                     </x-jet-nav-link>
                     @endcan
+                    @cannot('owner-higher')
+                    <x-jet-nav-link href="{{ route('order.index') }}" :active="request()->routeIs('order.index')">
+                        注文履歴
+                    </x-jet-nav-link>
+                    @endcan
+                    
                 </div>
             </div>
 
@@ -98,7 +111,7 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                アカウント管理
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
@@ -119,7 +132,7 @@
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                          @click.prevent="$root.submit();">
-                                    {{ __('Log Out') }}
+                                    ログアウト
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>
@@ -142,12 +155,19 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            @cannot('owner-higher')
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                社員食予約
             </x-jet-responsive-nav-link>
+            @endcan
             @can('owner-higher')
             <x-jet-responsive-nav-link href="{{ route('menus.index') }}" :active="request()->routeIs('menus.index')">
                 社食日程
+            </x-jet-responsive-nav-link>
+            @endcan
+            @cannot('owner-higher')
+            <x-jet-responsive-nav-link href="{{ route('order.index') }}" :active="request()->routeIs('order.index')">
+                注文履歴
             </x-jet-responsive-nav-link>
             @endcan
         </div>
@@ -185,7 +205,7 @@
 
                     <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                    @click.prevent="$root.submit();">
-                        {{ __('Log Out') }}
+                        ログアウト
                     </x-jet-responsive-nav-link>
                 </form>
 

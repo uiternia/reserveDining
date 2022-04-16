@@ -62,7 +62,7 @@ class User extends Authenticatable
 
     public function menus()
     {
-        return $this->belongsToMany(Event::class,'reservations')
-        ->withPivot('id','number_of_people');
+        return $this->belongsToMany(Menu::class,'reservations')
+        ->withPivot('id','number_of_people','canceled_date');
     }
 }

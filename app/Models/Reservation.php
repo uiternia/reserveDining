@@ -12,6 +12,7 @@ class Reservation extends Model
     protected $fillable = [
         'user_id',
         'menu_id',
-        'number_of_people'
+        'number_of_people',
+        'canceled_date',
     ];
 }

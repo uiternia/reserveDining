@@ -18,6 +18,7 @@ class MenuController extends Controller
 
         $reservedPeople = DB::table('reservations')
         ->select('menu_id',DB::raw('sum(number_of_people) as number_of_people'))
+        ->whereNull('canceled_date')
         ->groupBy('menu_id');
 
 
@@ -67,7 +68,19 @@ class MenuController extends Controller
     {
         $menu = Menu::findOrFail($menu->id);
         $users = $menu->users;
-        return view('owner.menus.show',compact('menu','users'));
+
+        $reservations = [];
+
+        foreach($users as $user)
+        {
+            $reservedInfo = [
+                'name' => $user->name,
+                'canceled_date' => $user->pivot->canceled_date
+            ];
+            array_push($reservations,$reservedInfo);
+        }
+
+        return view('owner.menus.show',compact('menu','users','reservations'));
     }
 
     
@@ -98,6 +111,6 @@ class MenuController extends Controller
     
     public function destroy(Menu $menu)
     {
-        //消去できてしまうとややこしいため実装していません。
+        
     }
 }

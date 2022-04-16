@@ -16,7 +16,8 @@
                 </div>
             @endif
             <div class="mt-8">
-                <form method="get" action="{{route('menus.edit',['menu'=> $menu->id ])}}" class="ml-2">
+                <form method="post" action="{{route('menus.reserve',['id'=> $menu->id ])}}" class="ml-2">
+                  @csrf
                   <div class="sm:flex text-center justify-around">
                     <div class="sm:mr-8">
                         <label for="day_date" class="text-sm text-gray-500 block">日付</label>
@@ -41,37 +42,26 @@
                  <div class="sm:mr-8 mb-4">
                     <label for="fruit" class="text-sm text-gray-500 block">フルーツ</label>
                     {{$menu->fruit}}
-                 </div>  
-                 <div class="sm:mr-8">
-                    <label for="max_people" class="text-sm text-gray-500 block">最大人数</label>
-                    {{$menu->max_people}}
-                 </div>       
+                 </div>     
                   </div>
+                  <input type="hidden" name="reservedPeople" value="1">
+                 <input type="hidden" name="id" value="{{$menu->id}}">
                     <div class="text-center my-8">
+                    @if($isReserved === null)
+                    @if($reservablePeople > 0)
                     <x-jet-button>
-                        編集する
+                        予約する
                     </x-jet-button>
+                    @endif
+                    @else
+                    <span class="text-sm">この日付の社食は既に予約済みです。</span>
+                    @endif
                     </div>
                 </form>
             </div>
           </div>
       </div>
   </div>
-
-  <div class="py-4">
-    @if (!$users->isEmpty())
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"> 
-    <div class="max-w-2xl mx-4 my-4">
-    <div class="text-center my-4 md:my-0">予約職員一覧</div>
-    @foreach ($reservations as $reservation)
-      @if(is_null($reservation['canceled_date']))
-      {{$reservation['name']}}
-      @endif
-    @endforeach
-    </div>
-    </div>
-    </div>
-    @endif
+  
   <script src="{{ mix('js/flatpickr.js')}}"></script>
 </x-app-layout>

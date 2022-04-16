@@ -22,6 +22,6 @@ class Menu extends Model
     public function users()
     {
         return $this->belongsToMany(User::class,'reservations')
-        ->withPivot('id','number_of_people');
+        ->withPivot('id','number_of_people','canceled_date');
     }
 }

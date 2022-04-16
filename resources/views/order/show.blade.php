@@ -16,7 +16,6 @@
                 </div>
             @endif
             <div class="mt-8">
-                <form method="get" action="{{route('menus.edit',['menu'=> $menu->id ])}}" class="ml-2">
                   <div class="sm:flex text-center justify-around">
                     <div class="sm:mr-8">
                         <label for="day_date" class="text-sm text-gray-500 block">日付</label>
@@ -41,37 +40,27 @@
                  <div class="sm:mr-8 mb-4">
                     <label for="fruit" class="text-sm text-gray-500 block">フルーツ</label>
                     {{$menu->fruit}}
-                 </div>  
-                 <div class="sm:mr-8">
-                    <label for="max_people" class="text-sm text-gray-500 block">最大人数</label>
-                    {{$menu->max_people}}
-                 </div>       
+                 </div>     
                   </div>
-                    <div class="text-center my-8">
-                    <x-jet-button>
-                        編集する
-                    </x-jet-button>
+                <form id="cancel_{{$menu->id}}" method="post" action="{{route('order.cancel',['id'=> $menu->id ])}}" class="ml-2">
+                    @csrf
+                    <div class="my-4 mx-4 text-center">
+                   <a href="#" data-id="{{$menu->id}}" onclick="cancelPost(this)" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
+                     キャンセルする
+                   </a>
                     </div>
                 </form>
             </div>
           </div>
       </div>
   </div>
-
-  <div class="py-4">
-    @if (!$users->isEmpty())
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"> 
-    <div class="max-w-2xl mx-4 my-4">
-    <div class="text-center my-4 md:my-0">予約職員一覧</div>
-    @foreach ($reservations as $reservation)
-      @if(is_null($reservation['canceled_date']))
-      {{$reservation['name']}}
-      @endif
-    @endforeach
-    </div>
-    </div>
-    </div>
-    @endif
-  <script src="{{ mix('js/flatpickr.js')}}"></script>
+  <script>
+    function cancelPost(e) {
+      'use strict';
+      if (confirm('本当にキャンセルしてもよろしいですか?')) 
+      {
+       document.getElementById('cancel_' + e.dataset.id).submit(); 
+      }
+      }
+  </script>
 </x-app-layout>
