@@ -27,6 +27,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'department'
     ];
 
     /**
@@ -58,4 +60,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function menus()
+    {
+        return $this->belongsToMany(Menu::class,'reservations')
+        ->withPivot('id','number_of_people','canceled_date');
+    }
 }
