@@ -14,7 +14,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @can('admin-higher')
                     <x-jet-nav-link href="{{ route('admin.index') }}" :active="request()->routeIs('admin.index')">
-                        職員社食管理
+                        職員管理
                     </x-jet-nav-link>
                     @endcan
                     @cannot('owner-higher')
