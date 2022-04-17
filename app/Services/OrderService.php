@@ -32,7 +32,7 @@ class OrderService
       foreach($menus->sortBy('day_date') as $menu)
       {
         if(is_null($menu->pivot->canceled_date) &&
-          $menu->day_date < Carbon::tomorrow()->format('Y-m-d'))
+          $menu->day_date <= Carbon::today()->format('Y-m-d'))
         {
           $menuInfo = [
             'id' => $menu->id,

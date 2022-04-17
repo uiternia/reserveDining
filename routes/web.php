@@ -38,7 +38,12 @@ Route::get('/', function () {
 
 Route::prefix('admin') ->middleware('can:admin-higher')->group(function(){
    Route::get('/',[AdminController::class,'index'])->name('admin.index');
+   Route::get('/create',[AdminController::class,'create'])->name('admin.create');
+   Route::post('/store',[AdminController::class,'store'])->name('admin.store');
    Route::get('/{id}',[AdminController::class,'show'])->name('admin.show');
+   Route::get('/{id}/edit',[AdminController::class,'edit'])->name('admin.edit');
+   Route::post('/{id}/update',[AdminController::class,'update'])->name('admin.update');
+   Route::post('/delete/{id}',[AdminController::class,'delete'])->name('admin.delete');
 });
 
 Route::prefix('owner') ->middleware('can:owner-higher')->group(function(){

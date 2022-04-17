@@ -22,7 +22,6 @@ class ReservationController extends Controller
         ->select('menu_id',DB::raw('sum(number_of_people) as number_of_people'))
         ->groupBy('menu_id');
 
-        //後にサービスコンテナに切り分け $menu $todayMenu
         $menus = DB::table('menus')
         ->leftJoinSub($reservedPeople,'reservedPeople',function($join){
             $join->on('menus.id', '=' ,'reservedPeople.menu_id');

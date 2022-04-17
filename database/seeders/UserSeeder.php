@@ -21,19 +21,22 @@ class UserSeeder extends Seeder
                 'name' => 'admin',
                 'email' => 'admin@admin.com',
                 'password' => Hash::make('passworddesu'),
-                'role' => 1
+                'role' => 1,
+                'department' => '看護部',
             ],
             [
                 'name' => 'owner',
                 'email' => 'owner@owner.com',
                 'password' => Hash::make('passworddesu'),
-                'role' => 5
+                'role' => 5,
+                'department' => '総務課',
             ],
             [
                 'name' => 'user',
                 'email' => 'test@test.com',
                 'password' => Hash::make('passworddesu'),
-                'role' => 9
+                'role' => 9,
+                'department' => '薬学部',
             ],
         ]);
     }
