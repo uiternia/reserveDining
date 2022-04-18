@@ -11,7 +11,7 @@
               <section class="text-gray-600 body-font">
                 <div class="container px-5 py-12 mx-auto">
                     <h3 class="text-center mb-12 font-semibold text-m text-gray-800 leading-tight">
-                        明日からの社食を予約できます。
+                        明日からの社食を予約できます
                     </h3>
                  @if (session('status'))
                   <div class="mb-4 font-medium text-sm text-green-600">
